@@ -2,7 +2,7 @@
 using namespace std;
 
 /*
- * Two Sum
+ * [Lession] Two Sum
  *
  * _____EN_____
  * Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.
