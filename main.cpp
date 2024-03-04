@@ -1,42 +1,47 @@
-# include <iostream>
-# include <string>
+#include <iostream>
 using namespace std;
 
-struct Person {
-    string name;
-    int age;
-    float height;
-    float weight;
-    char gender;
-    bool zin;
-};
+void getMinMax(int arr[], int arrLength) {
+    int min = arr[0];
+    int max = arr[0];
 
-void rtBMI(Person person) {
-    float bmi = person.weight / ((person.height / 100) * (person.height /100));
+    for (int i = 0; i < arrLength; ++i) {
+        if (arr[i] < min) min = arr[i];
+        if (arr[i] > max) max = arr[i];
+    }
 
-    if (bmi < 18.5) {
-        cout << person.name << " dang hoi gay";
-    } else if (bmi >= 18.5 && bmi <= 22.9) {
-        cout << person.name << " dang hoan hao";
-    } else if (bmi >= 23) {
-        cout << person.name << " dang thua can";
+    cout << min << endl;
+    cout << max << endl;
+}
+
+void Swap(int *x, int *y) {
+    int temp;
+    temp = *x;
+    *x = *y;
+    *y = temp;
+}
+
+void arrangeArr(int arr[], int arrLength) {
+    for (int i = 0; i < arrLength; ++i) {
+        int min = i;
+
+        for (int j = i + 1; j < arrLength; ++j) {
+            if (arr[j] < arr[min]) min = j;
+        }
+        Swap(&arr[i], &arr[min]);
+    }
+
+    for(int i = 0; i < arrLength; i++){
+        cout << arr[i] << " ";
     }
 }
 
 int main() {
-    Person person;
+    int arr[5] = {14, 54, 2, 1, 5};
+    int arrLength = sizeof(arr) / sizeof(int);
 
-    cout << "Tinh chi so BMI: " << endl;
-    cout << "Nhap ten: " << endl;
-    cin >> person.name;
-
-    cout << "Nhap can nang (kg): " << endl;
-    cin >> person.weight;
-
-    cout << "Nhap chieu cao (cm): " << endl;
-    cin >> person.height;
-
-    rtBMI(person);
+    getMinMax(arr, arrLength);
+    arrangeArr(arr, arrLength);
 
     return 0;
 }
