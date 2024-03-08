@@ -1,6 +1,5 @@
 /*
- * [Lession]
- * [Exercise]
+ * [Sort]
  *
  */
 
@@ -13,21 +12,29 @@ void Swap(int &x,int &y) {
     y = temp;
 }
 
-int main() {
-    int arr[5] = {4, 8, 5, 7, 9};
-    int arrLength = sizeof(arr) / sizeof(int);
+void prinArr(int arr[], int arrLength) {
+    for(int i = 0; i < arrLength; i++) {
+        cout << arr[i] << " ";
+    }
+}
 
-    for(int i = 0; i < arrLength - 1; i++) {
-        for(int j = i + 1; j < arrLength; j++) {
-            if(arr[i] > arr[j]) {
+void bubbleSort(int arr[], int arrLength) {
+    for(int i = 0; i < arrLength; i++) {
+        for(int j = 0; j < arrLength -1; j++) {
+            if(arr[j] > arr[j+1]) {
                 Swap(arr[i], arr[j]);
             }
         }
     }
+}
 
-    for(int i = 0; i < arrLength; i++) {
-        cout << arr[i] << " ";
-    }
+int main() {
+    int arr[5] = {4, 8, 5, 7, 9};
+    int arrLength = sizeof(arr) / sizeof(int);
+
+
+    bubbleSort(arr, arrLength);
+    prinArr(arr, arrLength);
 
     return 0;
 }
