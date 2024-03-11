@@ -3,35 +3,33 @@ using namespace std;
 
 void getArr(int arr[], int length) {
     for (int i = 0; i < length; ++i) {
-        cout << "Enter arr [" << i << "]:" << endl;
+        cout << "Enter arr[" << i << "]:" << endl;
         cin >> arr[i];
     }
 }
 
-void Swap(int &x,int &y) {
+void printArr(int arr[], int length) {
+    cout << "Array sort" << endl;
+    for (int i = 0; i < length; ++i) {
+        cout << arr[i] << " ";
+    }
+}
+
+void swap(int &x, int &y) {
     int temp = x;
     x = y;
     y = temp;
 }
 
-void prinArr(int arr[], int length) {
-    for(int i = 0; i < length; i++) {
-        cout << arr[i] << " ";
-    }
-}
-
-
-void bubbleSort(int arr[], int length) {
-    for(int i = 0; i < length; i++) {
-        for(int j = 0; j < length -1; j++) {
-            if(arr[j] > arr[j + 1]) {
-                Swap(arr[j], arr[j + 1]);
+void interchangeSort(int arr[], int length) {
+    for (int i = 0; i < length - 1; ++i) {
+        for (int j = i + 1; j < length; ++j) {
+            if (arr[i] > arr[j]) {
+                swap(arr[i], arr[j]);
             }
         }
     }
 }
-
-
 
 int main() {
     int length;
@@ -39,16 +37,9 @@ int main() {
     cin >> length;
 
     int *arr = new int[length];
-
     getArr(arr, length);
-
-    bubbleSort(arr, length);
-
-    for(int i = 0; i < length; i++) {
-        cout << arr[i] << " ";
-    }
-
-    delete[] arr;
+    interchangeSort(arr, length);
+    printArr(arr, length);
 
     return 0;
 }
